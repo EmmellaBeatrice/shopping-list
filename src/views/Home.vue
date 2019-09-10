@@ -6,7 +6,7 @@
       <h3><b>Shopping List</b></h3>
       <!-- item attribute helps you pass on data to itemTable because it starts with : 
       it does the same as v-bind -->
-      <item-table :items="items" />
+      <item-table :items="items" @delete:item="deleteItem" />
       <!-- OR
       <item-table v-bind:items="items" /> -->
        
@@ -46,6 +46,11 @@ export default {
     const newItem = { ...item, id };
     this.items = [...this.items, newItem];
     }, 
+    deleteItem(id){
+      this.items = this.items.filter(
+        employee => employee.id !== id
+      )
+    }
    }
 
 }

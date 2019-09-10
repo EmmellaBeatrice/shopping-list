@@ -1,6 +1,9 @@
 <template>
     <div id="item-table">
-        <table class="table">
+        <p v-if="items.length < 1" class="empty-table"> 
+            No Items
+        </p>
+        <table class="table" v-else>
             <thead class="thead-dark">
                 <tr>
                     <th>Item</th>
@@ -15,7 +18,7 @@
                     <td>{{ item.quantity }}</td>
                     <td>
                         <button>Edit</button> 
-                        <button>Delete</button>
+                        <button @click="$emit('delete:item', item.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
