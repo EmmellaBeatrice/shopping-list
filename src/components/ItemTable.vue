@@ -14,10 +14,20 @@
             <tbody>
                 <!-- retrieving items in the itemsTable and displaying it in the table-->
                 <tr v-for="item in items" :key="item.id">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>
-                        <button>Edit</button> 
+                    <td v-if= "editing === item.id" >
+                        <input type="text" v-model="item.name">
+                    </td>
+                    <td v-else>{{ item.name }}</td>
+                    <td v-if= "editing === item.id">
+                        <input type="text" v-model="item.quantity">
+                    </td>
+                    <td v-else >{{ item.quantity }}</td>
+                    <td v-if="editing === item.id">
+                        <button @click="editItem(item)">Save</button>
+                        <button class="muted-button" @click="editing = null">Cancel</button>
+                    </td>
+                    <td v-else>
+                        <button @click="editMode(item.id)">Edit</button> 
                         <button @click="$emit('delete:item', item.id)">Delete</button>
                     </td>
                 </tr>
@@ -31,6 +41,23 @@ export default {
     //telling the component that it will recieve data inform of an array
     props: {
         items: Array,
+    },
+    data() {
+        return {
+            editing: null,
+        }
+    },
+    methods: {
+        editMode(id){
+            this.editing = id
+        },
+        editItem(item) {
+            if (item.name ===  '' || item ===  '') return
+            this.$emit('edit:item', item.id, item)
+            this.editing = null
+        },
+        
+
     }
 }
 </script>
