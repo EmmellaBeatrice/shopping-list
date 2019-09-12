@@ -3,7 +3,9 @@
         <p v-if="items.length < 1" class="empty-table"> 
             No Items
         </p>
-        <table class="table" v-else>
+        <!-- Creating a table that displays items added through the form,
+        the items in the table can be edited and deleted -->
+        <table class="table table-bordered table-striped" v-else>
             <thead class="thead-dark">
                 <tr>
                     <th>Item</th>
@@ -12,7 +14,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- retrieving items in the itemsTable and displaying it in the table-->
                 <tr v-for="item in items" :key="item.id">
                     <td v-if= "editing === item.id" >
                         <input type="text" v-model="item.name">
@@ -48,6 +49,9 @@ export default {
         }
     },
     methods: {
+        /* creating an editing state that gets the id of the row currently being edited
+        when edit mode is enabled
+        */
         editMode(id){
             this.editing = id
         },

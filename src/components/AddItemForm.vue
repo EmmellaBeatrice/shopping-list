@@ -1,10 +1,10 @@
 <template>
+<!-- creating a form for adding item and their quantities into our shopping list -->
     <div id="item-form">
         <!-- the prevent helps in preventing the default GET/POST -->
         <form @submit.prevent="handleSubmit" id="myform" >
             <div class="form-group row">
                 <label for="item-name"><b>Item</b></label>
-                <!-- v-model for two way data binding -->
                 <input 
                 ref="first"
                 v-model= "item.name" 
@@ -42,8 +42,8 @@ export default {
     //will recieve props inform of an array
         data() {
         return{
-            //Adding submiting state to check whether the form is currently being submitted, 
-            //An error state if something went wrong, and a success state  if something when through properly
+            /* Adding submiting state to check whether the form is currently being submitted, 
+            An error state if something went wrong, and a success state  if it went well */
             submitting: false,
             error: false,
             success: false,
@@ -55,12 +55,13 @@ export default {
         }
     },
     methods: {
+            /* 
+            creating submit function which will first clear whether success/error are set,
+            check our computed properties and if true an error will be set 
+            or if not we can submit and set all the states back to default.
+            */
         handleSubmit(){
             // console.log('testing handle submit')
-            /* 
-            the submit function will first clear whether success/error then check our computed properties
-            if true an error will be set if not we can submit and set all the statuses to default.
-            */
             this.submitting = true
             this.clearStatus()
 
@@ -68,8 +69,10 @@ export default {
                 this.error = true
                 return
             }
+            /* 
+            passing items from the form to the table or to parent */
             this.$emit(
-                //name of emited event
+                //name of event to emit
                 'add:item',
                 //data to pass
                 this.item
