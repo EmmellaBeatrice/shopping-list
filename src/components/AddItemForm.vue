@@ -97,7 +97,8 @@ export default {
             return this.item.name === ''
         },
         invalidQuantity() {
-            return this.item.quantity === ''
+            // return this.item.quantity === ''
+            return isNaN(this.item.quantity)
         },
     },
 }
