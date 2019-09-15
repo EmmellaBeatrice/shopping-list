@@ -8,6 +8,7 @@
         <table class="table table-bordered table-striped" v-else>
             <thead class="thead-dark">
                 <tr>
+                    <th>No</th>
                     <th>Item</th>
                     <th>Quantity</th>
                     <th>Actions</th>
@@ -15,6 +16,7 @@
             </thead>
             <tbody>
                 <tr v-for="item in items" :key="item.id">
+                    <td>{{ item.id }}</td>
                     <td v-if= "editing === item.id" >
                         <input type="text" v-model="item.name">
                     </td>
