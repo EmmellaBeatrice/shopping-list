@@ -23,6 +23,15 @@
                 class="{'has-error': submitting && invalidName} form-control" 
                 placeholder="2" 
                 @focus= "clearStatus"/>
+            </div>
+            <div class="form-group row">
+                <label for="amount"><b>Amount</b></label>
+                <input 
+                v-model="item.amount"
+                type="text" 
+                class="{'has-error': submitting && invalidName} form-control" 
+                placeholder="UGX   2000" 
+                @focus= "clearStatus"/>
                 <p v-if= "error && submitting" class= "error-message">
                     Please fill in all fields
                 </p>

@@ -10,7 +10,7 @@
               <item-table v-bind:items="items" /> -->    
           </div>
           <div class="col-sm-5">
-            <h3><b>Add Items to shopping list</b></h3>
+            <h3><b>Add Items to Shopping List</b></h3>
             <AddItemForm  @add:item= "addItem" /><br>
           </div>
         </div>
