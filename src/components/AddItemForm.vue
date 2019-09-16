@@ -97,17 +97,18 @@ export default {
             return this.item.name === ''
         },
         invalidQuantity() {
-            // return this.item.quantity === ''
-            return isNaN(this.item.quantity)
+            if (this.item.quantity === '' || isNaN(this.item.quantity) )
+            
+            return
         },
     },
 }
 </script>
 <style>
-#myform{
+/* #myform{
   padding-left: 400px;
   padding-right: 500px;
-}
+} */
 [class*='-message']{
    font-weight: 500; 
 }

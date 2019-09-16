@@ -1,14 +1,20 @@
 <template>
-  <div class="home">
-    <h3><b>Add Items to shopping list</b></h3>
-      <AddItemForm  @add:item= "addItem" /><br>
-      <h3><b>Shopping List</b></h3>
-      <!-- item attribute helps you pass on data to itemTable because it starts with : 
-      it does the same as v-bind -->
-      <item-table :items= "items" @delete:item= "deleteItem" @edit:item= "editItem" />
-      <!-- OR
-      <item-table v-bind:items="items" /> -->     
-  </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-7">
+              <h3><b>Shopping List</b></h3>
+              <!-- item attribute helps you pass on data to itemTable because it starts with : 
+              it does the same as v-bind -->
+              <item-table :items= "items" @delete:item= "deleteItem" @edit:item= "editItem" />
+              <!-- OR
+              <item-table v-bind:items="items" /> -->    
+          </div>
+          <div class="col-sm-5">
+            <h3><b>Add Items to shopping list</b></h3>
+            <AddItemForm  @add:item= "addItem" /><br>
+          </div>
+        </div>
+      </div>
 </template>
 
 <script>
@@ -62,9 +68,11 @@ export default {
 }
 </script>
 <style>
-  h3 {
+  /* h3 {
     text-align: left;
     padding-left: 300px;
-  }
-
+  } */
+.container{
+  padding-bottom: 220px;
+}
 </style>
