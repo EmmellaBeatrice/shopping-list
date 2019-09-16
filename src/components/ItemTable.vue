@@ -68,9 +68,7 @@ export default {
 }
 </script>
 <style>
-/* #item-table {`
-padding-left: 300px;
-padding-right: 300px;
-padding-bottom: 65px;
-} */
+#item-table {
+padding-left: 0px;
+}
 </style>

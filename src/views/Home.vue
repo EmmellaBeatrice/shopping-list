@@ -68,10 +68,6 @@ export default {
 }
 </script>
 <style>
-  /* h3 {
-    text-align: left;
-    padding-left: 300px;
-  } */
 .container{
   padding-bottom: 220px;
 }

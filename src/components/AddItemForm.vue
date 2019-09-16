@@ -105,10 +105,9 @@ export default {
 }
 </script>
 <style>
-/* #myform{
-  padding-left: 400px;
-  padding-right: 500px;
-} */
+#myform{
+  padding-left: 15px;
+}
 [class*='-message']{
    font-weight: 500; 
 }
