@@ -1,6 +1,7 @@
 <template>
-      <div class="container">
-        <div class="row">
+      <div class="home">
+        <b-container>
+          <b-row>
           <div class="col-sm-7">
               <h3><b>Shopping List</b></h3>
               <!-- item attribute helps you pass on data to itemTable because it starts with : 
@@ -13,7 +14,8 @@
             <h3><b>Add Items to Shopping List</b></h3>
             <AddItemForm  @add:item= "addItem" /><br>
           </div>
-        </div>
+          </b-row>
+        </b-container> 
       </div>
 </template>
 
@@ -33,6 +35,7 @@ export default {
           id: 1,
           name: 'Basket',
           quantity: '5',
+          amount: '500',
         },
        
       ],
@@ -71,4 +74,5 @@ export default {
 .container{
   padding-bottom: 220px;
 }
+
 </style>

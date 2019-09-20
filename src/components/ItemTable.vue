@@ -11,6 +11,7 @@
                     <th>No</th>
                     <th>Item</th>
                     <th>Quantity</th>
+                    <th>Amount</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -24,7 +25,11 @@
                     <td v-if= "editing === item.id">
                         <input type="text" v-model="item.quantity">
                     </td>
-                    <td v-else >{{ item.quantity }}</td>
+                    <td v-else>{{ item.quantity }}</td>                   
+                    <td v-if= "editing === item.id">
+                        <input type="text" v-model="item.amount">
+                    </td>
+                    <td v-else >{{ item.amount }}</td>
                     <td v-if="editing === item.id">
                         <button @click="editItem(item)">Save</button>
                         <button class="muted-button" @click="editing = null">Cancel</button>

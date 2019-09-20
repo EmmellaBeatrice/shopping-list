@@ -2,10 +2,10 @@
 <!-- creating a form for adding item and their quantities into our shopping list -->
     <div id="item-form">
         <!-- the prevent helps in preventing the default GET/POST -->
-        <form @submit.prevent="handleSubmit" id="myform" >
-            <div class="form-group row">
+        <b-form @submit.prevent="handleSubmit" id="myform" >
+            <b-form-row>
                 <label for="item-name"><b>Item</b></label>
-                <input 
+                <b-form-input 
                 ref="first"
                 v-model= "item.name" 
                 type= "text" 
@@ -14,35 +14,35 @@
                 @focus= "clearStatus"
                 @keypress= "clearStatus"
                 />
-            </div>
-            <div class="form-group row">
+            </b-form-row>
+            <b-form-row>
                 <label for="quantity"><b>Quantity</b></label>
-                <input 
+                <b-form-input 
                 v-model="item.quantity"
                 type="text" 
                 class="{'has-error': submitting && invalidName} form-control" 
                 placeholder="2" 
                 @focus= "clearStatus"/>
-            </div>
-            <div class="form-group row">
+            </b-form-row>
+            <b-form-row>
                 <label for="amount"><b>Amount</b></label>
-                <input 
+                <b-form-input 
                 v-model="item.amount"
                 type="text" 
                 class="{'has-error': submitting && invalidName} form-control" 
                 placeholder="UGX   2000" 
                 @focus= "clearStatus"/>
                 <p v-if= "error && submitting" class= "error-message">
-                    Please fill in all fields
+                    Please fill in all fields, Quantity and Amount must be a number
                 </p>
                 <p v-if= "success" class="success-message">
                     Item Successfully added
                 </p>
-            </div>
+            </b-form-row><br>
                 <button class="btn btn-primary">Add Item</button>
 
             
-        </form>
+        </b-form>
     </div>
 </template>
 <script>
@@ -59,6 +59,7 @@ export default {
             item: {
                 name: '',
                 quantity: '',
+                amount: '',
             },
 
         }
@@ -74,7 +75,7 @@ export default {
             this.submitting = true
             this.clearStatus()
 
-            if (this.invalidItem || this.invalidQuantity){
+            if (this.invalidItem || this.invalidQuantity || this.invalidAmount){
                 this.error = true
                 return
             }
@@ -90,6 +91,7 @@ export default {
             this.item = {
                 name: '',
                 quantity: '',
+                amount: '',
             }
             this.error = false
             this.success = true
@@ -107,9 +109,11 @@ export default {
         },
         invalidQuantity() {
             if (this.item.quantity === '' || isNaN(this.item.quantity) )
-            
-            return
+            return true
         },
+        invalidAmount(){
+            return isNaN(this.item.amount)
+        }
     },
 }
 </script>
