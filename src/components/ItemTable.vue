@@ -13,10 +13,11 @@
                     <th>Quantity</th>
                     <th>Amount</th>
                     <th>Actions</th>
+                    
                 </tr>
             </thead>
-            <tbody>
-                <tr v-for="item in items" :key="item.id">
+            <tbody v-for="item in items" :key="item.id">
+                <tr>
                     <td>{{ item.id }}</td>
                     <td v-if= "editing === item.id" >
                         <input type="text" v-model="item.name">
@@ -38,9 +39,14 @@
                         <button @click="editMode(item.id)">Edit</button> 
                         <button @click="$emit('delete:item', item.id)">Delete</button>
                     </td>
+                    
                 </tr>
+                
             </tbody>
         </table>
+        <p>
+            <b>Total: </b>
+        </p>
     </div>
 </template>
 <script>
@@ -67,6 +73,7 @@ export default {
             this.$emit('edit:item', item.id, item)
             this.editing = null
         },
+ 
         
 
     }

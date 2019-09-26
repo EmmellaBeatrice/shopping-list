@@ -1,21 +1,22 @@
 <template>
       <div class="home">
-        <b-container>
+        <b-container >
           <b-row>
-          <div class="col-sm-7">
+          <b-col>
               <h3><b>Shopping List</b></h3>
               <!-- item attribute helps you pass on data to itemTable because it starts with : 
               it does the same as v-bind -->
-              <item-table :items= "items" @delete:item= "deleteItem" @edit:item= "editItem" />
+              <item-table :items= "items" @delete:item= "deleteItem" @edit:item= "editItem" total />
               <!-- OR
               <item-table v-bind:items="items" /> -->    
-          </div>
-          <div class="col-sm-5">
+          </b-col>
+          
+          <b-col>
             <h3><b>Add Items to Shopping List</b></h3>
             <AddItemForm  @add:item= "addItem" /><br>
-          </div>
+          </b-col>
           </b-row>
-        </b-container> 
+        </b-container > 
       </div>
 </template>
 
@@ -37,8 +38,9 @@ export default {
           quantity: '5',
           amount: '500',
         },
-       
       ],
+      shoppingCart: [], 
+      
     }
   },
   methods:{
@@ -52,6 +54,8 @@ export default {
     const id = lastId + 1;
     const newItem = { ...item, id };
     this.items = [...this.items, newItem];
+   
+    // total = newItem + this.amount;
     }, 
     /* 
     creating method to delete an item from the items array */
@@ -65,6 +69,9 @@ export default {
     editItem(id, updateItem){
       this.items = this.items.map(item => 
       item.id === id? updateItem : item)
+    },
+    total: function(newAmount){
+        this.items.amount + newAmount
     }
    }
 
@@ -72,7 +79,7 @@ export default {
 </script>
 <style>
 .container{
-  padding-bottom: 220px;
+  padding-bottom: 900px;
 }
 
 </style>
