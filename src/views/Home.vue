@@ -6,7 +6,8 @@
               <h3><b>Shopping List</b></h3>
               <!-- item attribute helps you pass on data to itemTable because it starts with : 
               it does the same as v-bind -->
-              <item-table :items= "items" @delete:item= "deleteItem" @edit:item= "editItem" total />
+              <item-table :items= "items" @delete:item= "deleteItem" @edit:item= "editItem"  />
+              
               <!-- OR
               <item-table v-bind:items="items" /> -->    
           </b-col>
@@ -39,8 +40,7 @@ export default {
           amount: '500',
         },
       ],
-      shoppingCart: [], 
-      
+      totalAmount: [], 
     }
   },
   methods:{
@@ -70,9 +70,14 @@ export default {
       this.items = this.items.map(item => 
       item.id === id? updateItem : item)
     },
-    total: function(newAmount){
-        this.items.amount + newAmount
+    //function for adding totol amount with new amount
+    total(totalAmount, newAmount){
+      return this.item.amount
+              //using reduce to sum amount in the array
+      // const sum = items.amount.reduce(totalAmount + newAmount)
+     
     }
+
    }
 
 }

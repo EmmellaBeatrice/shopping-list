@@ -11,9 +11,9 @@
                     <th>No</th>
                     <th>Item</th>
                     <th>Quantity</th>
-                    <th>Amount</th>
+                    <th>Price@</th>
                     <th>Actions</th>
-                    
+                    <th>#</th>
                 </tr>
             </thead>
             <tbody v-for="item in items" :key="item.id">
@@ -39,14 +39,23 @@
                         <button @click="editMode(item.id)">Edit</button> 
                         <button @click="$emit('delete:item', item.id)">Delete</button>
                     </td>
+                    <td>
+                        <input type="checkbox" v-model="selected" :value="item">
+                    </td>
                     
                 </tr>
-                
+                <!-- <tr>
+                    <td>
+                        <button @click="totalAmount()">Add Total</button>
+                       
+                    </td>
+                    <td>
+                        <p >{{ totalAmount }}</p>
+                    </td>
+                </tr> -->
             </tbody>
         </table>
-        <p>
-            <b>Total: </b>
-        </p>
+        
     </div>
 </template>
 <script>
@@ -74,7 +83,16 @@ export default {
             this.editing = null
         },
  
-        
+       computed: {
+           totalAmount(){
+               return this.items.map(item => item.amount).reduce(
+                   (total, price) => total + amount)
+           }
+
+       },
+    //    addTotal() {
+    //        this.total = totalAmount
+    //    } 
 
     }
 }
