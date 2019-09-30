@@ -40,7 +40,7 @@ export default {
           amount: '500',
         },
       ],
-      totalAmount: [], 
+     
     }
   },
   methods:{
@@ -70,15 +70,10 @@ export default {
       this.items = this.items.map(item => 
       item.id === id? updateItem : item)
     },
-    //function for adding totol amount with new amount
-    total(totalAmount, newAmount){
-      return this.item.amount
-              //using reduce to sum amount in the array
-      // const sum = items.amount.reduce(totalAmount + newAmount)
-     
-    }
+ 
 
-   }
+   },
+
 
 }
 </script>

@@ -44,18 +44,10 @@
                     </td>
                     
                 </tr>
-                <!-- <tr>
-                    <td>
-                        <button @click="totalAmount()">Add Total</button>
-                       
-                    </td>
-                    <td>
-                        <p >{{ totalAmount }}</p>
-                    </td>
-                </tr> -->
+        
             </tbody>
         </table>
-        
+        <strong>Total:  </strong><span>{{ total }}</span>
     </div>
 </template>
 <script>
@@ -68,7 +60,11 @@ export default {
     data() {
         return {
             editing: null,
+            selected: [],
+            
         }
+
+        
     },
     methods: {
         /* creating an editing state that gets the id of the row currently being edited
@@ -82,19 +78,15 @@ export default {
             this.$emit('edit:item', item.id, item)
             this.editing = null
         },
- 
-       computed: {
-           totalAmount(){
-               return this.items.map(item => item.amount).reduce(
-                   (total, price) => total + amount)
-           }
 
+    },
+    computed: {
+        total(){
+            return this.selected.reduce(function (sum, item){
+                return sum + parseInt(item.TOTAL) 
+            }, 0)
+        }
        },
-    //    addTotal() {
-    //        this.total = totalAmount
-    //    } 
-
-    }
 }
 </script>
 <style>
