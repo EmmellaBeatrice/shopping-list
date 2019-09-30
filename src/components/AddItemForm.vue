@@ -2,9 +2,9 @@
 <!-- creating a form for adding item and their quantities into our shopping list -->
     <div id="item-form">
         <!-- the prevent helps in preventing the default GET/POST -->
-        <b-form @submit.prevent="handleSubmit" id="myform" >
-            <b-form-row>
-                <label for="item-name"><b>Item</b></label>
+        <b-form inline @submit.prevent="handleSubmit" id="myform">
+            
+              <label for="item-name"><b>Item</b></label>&nbsp; 
                 <b-form-input 
                 ref="first"
                 v-model= "item.name" 
@@ -13,36 +13,30 @@
                 placeholder= "Bottle" 
                 @focus= "clearStatus"
                 @keypress= "clearStatus"
-                />
-            </b-form-row>
-            <b-form-row>
-                <label for="quantity"><b>Quantity</b></label>
+                />&nbsp; 
+                <label for="quantity"><b>Quantity</b></label>&nbsp; 
                 <b-form-input 
                 v-model="item.quantity"
                 type="text" 
                 class="{'has-error': submitting && invalidName} form-control" 
                 placeholder="2" 
-                @focus= "clearStatus"/>
-            </b-form-row>
-            <b-form-row>
-                <label for="amount"><b>Amount</b></label>
+                @focus= "clearStatus"/>&nbsp; 
+                <label for="amount"><b>Amount</b></label>&nbsp; 
                 <b-form-input 
                 v-model="item.amount"
                 type="text" 
                 class="{'has-error': submitting && invalidName} form-control" 
                 placeholder="UGX   2000" 
-                @focus= "clearStatus"/>
-                <p v-if= "error && submitting" class= "error-message">
-                    Please fill in all fields, Quantity and Amount must be a number
-                </p>
-                <p v-if= "success" class="success-message">
-                    Item Successfully added
-                </p>
-            </b-form-row><br>
+                @focus= "clearStatus"/>&nbsp; &nbsp; 
                 <button class="btn btn-primary">Add Item</button>
-
-            
+                <span v-if= "error && submitting" class= "error-message">
+                    Please fill in all fields, Quantity and Amount must be a number
+                </span>
+                <span v-if= "success" class="success-message">
+                    Item Added Successfully
+                </span>
         </b-form>
+        
     </div>
 </template>
 <script>
@@ -122,7 +116,7 @@ export default {
   padding-left: 15px;
 }
 [class*='-message']{
-   font-weight: 500; 
+   font-weight: 900; 
 }
 .error-message{
     color: #d33c40;

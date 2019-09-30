@@ -13,7 +13,8 @@
                     <th>Quantity</th>
                     <th>Price@</th>
                     <th>Actions</th>
-                    <th>#</th>
+                    <th>Select Item</th>
+                    <th>Date Added</th>
                 </tr>
             </thead>
             <tbody v-for="item in items" :key="item.id">
@@ -42,12 +43,12 @@
                     <td>
                         <input type="checkbox" v-model="selected" :value="item">
                     </td>
-                    
+                    <td>{{ myDate }}</td>
                 </tr>
         
             </tbody>
         </table>
-        <strong>Total:  </strong><span>{{ total }}</span>
+        <strong id="total">Total:  <span>{{ total }}</span></strong>
     </div>
 </template>
 <script>
@@ -61,7 +62,7 @@ export default {
         return {
             editing: null,
             selected: [],
-            
+            myDate: new Date().toISOString().slice(0,10)
         }
 
         
@@ -83,7 +84,7 @@ export default {
     computed: {
         total(){
             return this.selected.reduce(function (sum, item){
-                return sum + parseInt(item.TOTAL) 
+                return sum + Number(item.amount)
             }, 0)
         }
        },
@@ -92,5 +93,9 @@ export default {
 <style>
 #item-table {
 padding-left: 0px;
+}
+#total{
+    margin-left: 880px;
+    
 }
 </style>
