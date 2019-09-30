@@ -36,8 +36,8 @@ export default {
         {
           id: 1,
           name: 'Basket',
-          quantity: '5',
-          amount: '500',
+          quantity: 5,
+          amount: 500,
         },
       ],
      
