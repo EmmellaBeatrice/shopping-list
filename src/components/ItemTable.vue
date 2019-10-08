@@ -11,9 +11,10 @@
                     <th>No</th>
                     <th>Item</th>
                     <th>Quantity</th>
-                    <th>Amount</th>
+                    <th>Price@</th>
                     <th>Actions</th>
-                    
+                    <th>Select Item</th>
+                    <th>Date Added</th>
                 </tr>
             </thead>
             <tbody v-for="item in items" :key="item.id">
@@ -39,14 +40,15 @@
                         <button @click="editMode(item.id)">Edit</button> 
                         <button @click="$emit('delete:item', item.id)">Delete</button>
                     </td>
-                    
+                    <td>
+                        <input type="checkbox" v-model="selected" :value="item">
+                    </td>
+                    <td>{{ myDate }}</td>
                 </tr>
-                
+        
             </tbody>
         </table>
-        <p>
-            <b>Total: </b>
-        </p>
+        <strong id="total">Total:  <span>{{ total }}</span></strong>
     </div>
 </template>
 <script>
@@ -59,7 +61,11 @@ export default {
     data() {
         return {
             editing: null,
+            selected: [],
+            myDate: new Date().toISOString().slice(0,10)
         }
+
+        
     },
     methods: {
         /* creating an editing state that gets the id of the row currently being edited
@@ -73,14 +79,23 @@ export default {
             this.$emit('edit:item', item.id, item)
             this.editing = null
         },
- 
-        
 
-    }
+    },
+    computed: {
+        total(){
+            return this.selected.reduce(function (sum, item){
+                return sum + Number(item.amount)
+            }, 0)
+        }
+       },
 }
 </script>
 <style>
 #item-table {
 padding-left: 0px;
+}
+#total{
+    margin-left: 880px;
+    
 }
 </style>
