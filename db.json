@@ -1,0 +1,18 @@
+{
+  "items": [
+  {
+          id: 1,
+          name: 'Pen',
+          quantity: 5,
+          amount: 500,
+        },
+        {
+        id: 2,
+          name: 'Pencil',
+          quantity: 1,
+          amount: 100,
+        },
+        
+        
+  ]
+}
